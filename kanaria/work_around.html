@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+</head>
+<body ng-app="workAround">
+<div class="row" style="padding: 20px; margin: 5px; border: 1px solid #d4d4d4; border-radius: 5px;">
+    <div class="col-md-4">
+        <form ng-controller="CoordinatesController as coordCtrl" ng-submit="coordCtrl.submit()">
+        <input type='hidden' name='csrfmiddlewaretoken' value='A7CxgaBUfWHZnnPliTnFyLXJTFDsg3xX' />
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Широта:</td>
+                        <td class="ng-cloak">{{coordCtrl.latitude}}</td>
+                    </tr>
+                    <tr>
+                        <td>Долгота:</td>
+                        <td class="ng-cloak">{{coordCtrl.longtitude}}</td>
+                    </tr>
+                    <tr>
+                        <td>Радиус (м):</td>
+                        <td>
+                            <select ng-model="coordCtrl.radius" ng-change="coordCtrl.changeRadius()" ng-options="radius for radius in coordCtrl.radiuses" class="form-control input-sm"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td style="text-align: right;">
+                            <input type="submit" class="btn btn-default" value="Найти"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="col-md-8" style="border: 1px solid #d4d4d4; padding: 0">
+        <div id="map" style="width:100%;height:400px;"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
