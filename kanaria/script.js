@@ -8,7 +8,8 @@
         ctrl.latitude = latitude;
         ctrl.longtitude = longtitude;
         ctrl.radius = 100;
-        ctrl.radiuses = [50,100,200];
+        ctrl.radiuses = [100, 200, 500, 1e3, 3e3];
+        ctrl.photos = [];
         ctrl.changeRadius = function() {
             myCircle.geometry.setRadius(ctrl.radius)
         };
@@ -24,7 +25,8 @@
                 }
             });
             response.success(function(data){
-                console.log(data);
+                ctrl.photos = data.response;
+                ctrl.photos.splice(0, 1);
             });
         };
 
